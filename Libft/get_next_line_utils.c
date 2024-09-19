@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:31:24 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/11 17:41:38 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:28:48 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*ft_gnlstrchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
+
 char	*ft_strdupn(const char *s)
 {
 	size_t	i;

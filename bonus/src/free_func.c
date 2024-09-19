@@ -6,11 +6,11 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:51:36 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/16 13:57:51 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:14:57 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	ft_free_design(t_map *map)
 {
@@ -23,7 +23,8 @@ void	ft_free_design(t_map *map)
 	}
 	while (++i < map->height)
 	{
-		free(map->design[i]);
+		if (map->design[i])
+			free(map->design[i]);
 	}
 	free(map->design);
 }
@@ -57,6 +58,8 @@ void	ft_free_all(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
+	if (game->player)
+		free(game->player);
 	free(game->mlx);
 	exit(0);
 }

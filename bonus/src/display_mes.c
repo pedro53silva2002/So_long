@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 17:36:03 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/18 17:55:52 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:15:58 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ int	ft_display_success(t_game *game, int id)
 int	ft_display_defeat(t_game *game)
 {
 	ft_printf(game->player[0]->def_msg);
-	ft_endgame(game);
-	return (0);
-}
-
-int	ft_display_to_much_moves(t_game *game)
-{
-	ft_printf("Come on.... you don't need that much of moves.");
 	ft_endgame(game);
 	return (0);
 }
@@ -60,8 +53,6 @@ int	ft_display_moves(t_game *game)
 	int		width;
 
 	width = game->map->width;
-	if (game->total_moves >= 500)
-		ft_display_to_much_moves(game);
 	str = ft_itoa(game->player[0]->moves);
 	str2 = ft_itoa(game->player[1]->moves);
 	mlx_put_image_to_window(game->mlx, game->win,

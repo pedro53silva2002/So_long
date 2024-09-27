@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:12:37 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/18 17:56:50 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:46:16 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ int	main(int argc, char **argv)
 	if (!ft_init_map(&map, argv[1]))
 	{
 		ft_early_exit(&map, game);
-		return (ft_printf("Something wrong with map!\n"), 0);
+		return (0);
 	}
 	if (!ft_init_player(&player1))
 	{
 		ft_early_exit(&map, game);
-		return (ft_printf("Something wrong with player!\n"), 0);
+		return (ft_printf("Error\nSomething wrong with player!\n"), 0);
 	}
 	if (!ft_init_player(&player2))
 	{
 		ft_early_exit(&map, game);
-		return (ft_printf("Something wrong with player2!\n"), 0);
+		return (ft_printf("Error\nSomething wrong with player2!\n"), 0);
 	}
 	ft_start_game(&map, &player1, &player2, game);
 	return (0);

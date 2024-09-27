@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:34:10 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/18 17:56:34 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:11:35 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ int	ft_handle_keys(int keycode, t_game *game)
 	return (0);
 }
 
+void	ft_make_map(t_game *game)
+{
+	if (!ft_render_map(game))
+	{
+		ft_printf("Error\nSomething wrong with game.");
+		ft_endgame(game);
+	}
+}
+
 void	ft_start_game(t_map *map,
 	t_player *player, t_player *player2, t_game game)
 {
@@ -51,7 +60,7 @@ void	ft_start_game(t_map *map,
 	game.pos = 0;
 	game.win = mlx_new_window(game.mlx, (RES * map->width),
 			(RES * map->height), "so_long_bonus");
-	ft_render_map(&game);
+	ft_make_map(&game);
 	game.map->design[game.map->start_y][game.map->start_x] = '0';
 	game.map->design[game.map->start2_y][game.map->start2_x] = '0';
 	mlx_mouse_show(game.mlx, game.win);

@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:34:10 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/13 16:33:57 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:17:51 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,13 @@ void	ft_start_game(t_map *map, t_player *player, t_game game)
 	game.pos = 0;
 	game.win = mlx_new_window(game.mlx, (RES * map->width),
 			(RES * map->height), "so_long");
-	ft_render_map(&game);
+	if (!ft_render_map(&game))
+	{
+		ft_printf("Error\nSomething wrong with game.");
+		ft_endgame(&game);
+	}
 	mlx_mouse_show(game.mlx, game.win);
 	mlx_hook(game.win, 2, 1L << 0, &ft_handle_keys, &game);
 	mlx_hook(game.win, 17, 1L << 0, &ft_display_defeat, &game);
 	mlx_loop(game.mlx);
 }
-
-	//ft_put_img_in_window(mlx, mlx_win, 2, 2);
-	/* img.img = mlx_new_image(mlx, 64,64);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	my_mlx_pixel_put(&img, 10, 50, 0x00FF0000); */

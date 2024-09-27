@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 14:23:06 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/13 17:07:59 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:50:37 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ static void	ft_get_player(t_map *map)
 
 int	ft_check_path(t_map *map, char *file)
 {
-	char	**path;
 	int		collec;
 	int		x;
 	int		y;
@@ -86,7 +85,6 @@ int	ft_check_path(t_map *map, char *file)
 	x = map->start_x;
 	y = map->start_y;
 	collec = map->iscollectible;
-	path = map->design;
 	ft_find_path(map, x, y);
 	ft_free_design(map);
 	ft_fill_design(map, file);

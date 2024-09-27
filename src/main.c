@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:12:37 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/16 14:00:03 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:46:45 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 		ft_free_design(&map);
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
-		ft_printf("Something wrong with map!\n");
 		return (0);
 	}
 	if (!ft_init_player(&player))
@@ -34,7 +33,7 @@ int	main(int argc, char **argv)
 		ft_free_design(&map);
 		mlx_destroy_display(game.mlx);
 		free(game.mlx);
-		ft_printf("Something wrong with player!\n");
+		ft_printf("Error\n	Something wrong with player!\n");
 		return (0);
 	}
 	ft_start_game(&map, &player, game);

@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:34:10 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/18 17:52:10 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:46:02 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_selec_img(int x, int y, t_map *map)
 	return (GROUND);
 }
 
-void	ft_put_img_in_window(t_game *game, int x, int y, t_map *map)
+int	ft_put_img_in_window(t_game *game, int x, int y, t_map *map)
 {
 	int		img_width;
 	int		img_height;
@@ -65,14 +65,18 @@ void	ft_put_img_in_window(t_game *game, int x, int y, t_map *map)
 	img_height = 64;
 	game->img[game->pos].img = mlx_xpm_file_to_image(game->mlx, relative_path,
 			&img_width, &img_height);
+	if (!game->img[game->pos].img)
+		return (0);
 	mlx_put_image_to_window(game->mlx, game->win, game->img[game->pos++].img,
 		x * 64, y * 64);
+	return (1);
 }
 
 int	ft_render_map(t_game *game)
 {
 	int	x;
 	int	y;
+	int	image;
 
 	y = -1;
 	x = 0;
@@ -81,7 +85,10 @@ int	ft_render_map(t_game *game)
 		x = -1;
 		while (++x < (game->map->width))
 		{
-			ft_put_img_in_window(game, x, y, game->map);
+			image = ft_put_img_in_window(game, x, y, game->map);
+			if (!image)
+				return (ft_printf("Error\nMissing image\n")
+					, 0);
 		}
 	}
 	return (1);

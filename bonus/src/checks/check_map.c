@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:05:42 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:01:22 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:39:31 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,22 @@ int	ft_check_map(t_map *map, char *file)
 {
 	if ((map->height < 6 && map->width < 3)
 		|| (map->height < 3 && map->width < 6))
-		return (ft_printf("Size wrong\n"), 0);
+		return (ft_printf("Error\nMap too small\n")
+			, 0);
 	if (!ft_check_horizontal_walls(map))
-		return (ft_printf("No horizontal\n"), 0);
+		return (ft_printf("Error\nWrong horizontals\n")
+			, 0);
 	if (!ft_check_vertical_walls(map))
-		return (ft_printf("No vertical\n"), 0);
+		return (ft_printf("Error\nWrong verticals\n")
+			, 0);
 	if (!ft_check_assets(map))
-		return (ft_printf("No assets\n"), 0);
+		return (ft_printf("Error\nWrong assets\n")
+			, 0);
 	if (!ft_check_path(map, file))
-		return (ft_printf("No path\n"), 0);
+		return (ft_printf("Error\nNo possible path\n")
+			, 0);
 	if (!ft_check_unkchr(map))
-		return (ft_printf("Unknown character\n"), 0);
+		return (ft_printf("Error\nUnknow character\n")
+			, 0);
 	return (1);
 }

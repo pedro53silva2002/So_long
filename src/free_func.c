@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 11:51:36 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/16 13:57:51 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:51:15 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ void	ft_free_design(t_map *map)
 
 void	ft_free_img(t_game *game)
 {
-	int	x;
-	int	y;
-
-	y = -1;
-	x = 0;
 	if (game->img)
 	{
 		if (game->img[0].img)

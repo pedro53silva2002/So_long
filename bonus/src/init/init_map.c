@@ -6,7 +6,7 @@
 /*   By: peferrei <peferrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 13:17:28 by peferrei          #+#    #+#             */
-/*   Updated: 2024/09/19 18:08:32 by peferrei         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:46:27 by peferrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,18 @@ int	ft_init_map(t_map *map, char *file)
 	int	fd;
 
 	if (!ft_checkfile(map, file))
-		return (0);
+		return (ft_printf("Error\nNot .ber file\n")
+			, 0);
 	map = ft_memset(map, 0, sizeof(t_map));
 	fd = open(file, O_RDONLY);
 	close(fd);
-	if (fd == -1)
+	if (fd < 0)
 		return (0);
 	ft_give_value(map);
 	ft_mapsize(map, file);
 	if (map->invalid)
-		return (0);
+		return (ft_printf("Error\nLine size different\n")
+			, 0);
 	ft_fill_design(map, file);
 	if (!ft_check_map(map, file))
 		return (0);
